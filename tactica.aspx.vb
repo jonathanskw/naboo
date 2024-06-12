@@ -485,7 +485,7 @@ Partial Class tactica
             txtToneladas.Text = (PromTons * porcEmpuje).ToString("N2")
         End If
 
-
+        'Revisar
 
         Dim CostoRealCliente As Double
         CostoRealCliente = fnCostoCliente()

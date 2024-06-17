@@ -173,8 +173,8 @@ Partial Class tactica
         End If
         Dim sFabricadoEn As String = fnTipoProducto(sCardCode)
 
-        ssql = "SELECT T0.ItemCode ,T2.ItemName, T0.ItemCode + ' - ' + T2.ItemName as Descripcion, T0.Price  FROM ITM1 T0 INNER JOIN OPLN T1 on T1.ListNum = T0.PriceList INNER JOIN OITM T2 on T2.ItemCode =T0.ItemCode WHERE T2.U_GrupoMaestro='Productos Pegaduro' AND T2.U_VendidoEn in(" & sFabricadoEn & ") AND T1.ListName ='" & ListaPrecios & "' and Price >0 " _
-& "AND T0.ItemCode not in (select top 3 articulo collate SQL_Latin1_General_CP1_CI_AS FROM(select Articulo,sum(toneladas)as toneladas from Satelite_SAP .sistemas.Eficiencia where codigo='" & sCardCode & "' and fecha between getdate()-120 and getdate()   group by articulo)X order by toneladas desc) Order By Descripcion "
+        ssql = "SELECT T0.ItemCode ,T2.ItemName, T0.ItemCode + ' - ' + T2.ItemName as Descripcion, T0.Price  FROM ITM1 T0 INNER JOIN OPLN T1 on T1.ListNum = T0.PriceList INNER JOIN OITM T2 on T2.ItemCode =T0.ItemCode WHERE T2.U_GrupoMaestro='Productos Pegaduro' AND T2.U_VendidoEn in(" & sFabricadoEn & ") AND T1.ListName ='" & ListaPrecios & "' and Price >0  Order By Descripcion "
+        '& "AND T0.ItemCode not in (select top 3 articulo collate SQL_Latin1_General_CP1_CI_AS FROM(select Articulo,sum(toneladas)as toneladas from Satelite_SAP .sistemas.Eficiencia where codigo='" & sCardCode & "' and fecha between getdate()-120 and getdate()   group by articulo)X order by toneladas desc) Order By Descripcion "
         Dim dtProductos As New DataTable
         dtProductos = objDatos.fnEjecutarConsulta(ssql)
 
